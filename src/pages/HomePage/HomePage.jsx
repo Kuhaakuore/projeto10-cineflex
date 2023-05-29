@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
-  
+
   function getMovies() {
     const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
     const promise = axios.get(URL);
