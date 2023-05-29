@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function Session({ day, setSession}) {
-    const {date} = day;
-    
+    const {date, weekday} = day;
+
     function saveSessionData(time) {
-        const newSession = {date, time};
+        const newSession = {date, time, weekday};
         setSession(newSession);
     }
 

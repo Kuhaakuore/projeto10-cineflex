@@ -20,7 +20,6 @@ export default function HomePage({
     setName("");
     setCpf("");
     setSelectedSeats([]);
-    console.log("pronto");
   }
 
   function getMovies() {

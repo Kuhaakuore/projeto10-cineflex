@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Seat from "../../components/Seat";
+import Footer from "../../components/Footer";
 
-export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, setSelectedSeats, session }) {
+export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, setSelectedSeats, movie, session }) {
   const { idSessao } = useParams();
   const [seats, setSeats] = useState(undefined);
   const navigate = useNavigate();
@@ -37,6 +38,8 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
       .catch(error => alert(error.data));
     }
   }
+
+  console.log(seats);
 
   return (
     <PageContainer>
@@ -88,20 +91,7 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
           <button type="submit">Reservar Assento(s)</button>
         </form>
       </FormContainer>
-      <FooterContainer>
-        <div>
-          <img
-            src={
-              "https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"
-            }
-            alt="poster"
-          />
-        </div>
-        <div>
-          <p>Tudo em todo lugar ao mesmo tempo</p>
-          <p>Sexta - 14h00</p>
-        </div>
-      </FooterContainer>
+      <Footer movie={movie} session={session} />
     </PageContainer>
   );
 }

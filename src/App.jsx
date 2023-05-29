@@ -47,6 +47,7 @@ export default function App() {
                 setCpf={setCpf}
                 selectedSeats={selectedSeats}
                 setSelectedSeats={setSelectedSeats}
+                movie={movie}
                 session={session}
               />
             }
