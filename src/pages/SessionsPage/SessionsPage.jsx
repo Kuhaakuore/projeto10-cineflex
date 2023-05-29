@@ -1,12 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Session from "../../components/Session";
 import Footer from "../../components/Footer";
 
-export default function SessionsPage({ movie, setMovie, setSession }) {
+export default function SessionsPage({ movie, setMovie, setSession, setCurrentUrl }) {
   const { idFilme } = useParams();
 
   function getMovie() {
@@ -15,6 +14,7 @@ export default function SessionsPage({ movie, setMovie, setSession }) {
     promise
       .then((response) => setMovie(response.data))
       .catch((response) => console.log(response));
+    setCurrentUrl(window.location.pathname);
   }
 
   useEffect(getMovie, []);
@@ -23,7 +23,7 @@ export default function SessionsPage({ movie, setMovie, setSession }) {
     return (
       <>
         {days.map((day) => (
-          <Session day={day} key={day.id} setSession={setSession} />
+          <Session day={day} key={day.id} setSession={setSession} data-test="movie-day"/>
         ))}
       </>
     );

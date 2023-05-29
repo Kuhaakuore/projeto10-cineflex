@@ -45,6 +45,7 @@ export default function Seat({ seat, selectedSeats, setSelectedSeats }) {
         fill={checkAvailability(isAvailable).fill}
         stroke={checkAvailability(isAvailable).stroke}
         onClick={() => selectSeat(isAvailable)}
+        data-test="seat"
       >
         {name}
       </SeatItem>

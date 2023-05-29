@@ -16,7 +16,7 @@ export default function Session({ day, setSession}) {
         <ButtonsContainer>
           {day.showtimes.map((time) => (
             <Link to={`/assentos/${time.id}`} key={time.id}>
-              <button onClick={() => saveSessionData(time.name)}>{time.name}</button>
+              <button onClick={() => saveSessionData(time.name)} data-test="showtime">{time.name}</button>
             </Link>
           ))}
         </ButtonsContainer>

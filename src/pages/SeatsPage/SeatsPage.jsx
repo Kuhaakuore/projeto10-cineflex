@@ -6,7 +6,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import Seat from "../../components/Seat";
 import Footer from "../../components/Footer";
 
-export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, setSelectedSeats, movie, session }) {
+export default function SeatsPage({
+  name,
+  setName,
+  cpf,
+  setCpf,
+  selectedSeats,
+  setSelectedSeats,
+  movie,
+  session,
+  setCurrentUrl,
+}) {
   const { idSessao } = useParams();
   const [seats, setSeats] = useState(undefined);
   const navigate = useNavigate();
@@ -17,6 +27,7 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
     promise
       .then((response) => setSeats(response.data.seats))
       .catch((response) => console.log(response));
+    setCurrentUrl(window.location.pathname);
   }
 
   useEffect(getSeats, []);
@@ -33,13 +44,11 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
       const ids = selectedSeats.map((seat) => seat.id);
       const booking = { ids, name, cpf };
       const promise = axios.post(URL, booking);
-      promise
-      .then(navigate("/sucesso"))
-      .catch(error => alert(error.data));
+      promise.then(navigate("/sucesso")).catch((error) => alert(error.data));
     }
   }
 
-  console.log(seats);
+
 
   return (
     <PageContainer>
@@ -68,8 +77,7 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
           Indisponível
         </CaptionItem>
       </CaptionContainer>
-      <FormContainer>
-        <form onSubmit={bookSeats}>
+      <FormContainer onSubmit={bookSeats}>
           <label htmlFor="nome">Nome do Comprador:</label>
           <input
             type="text"
@@ -78,6 +86,7 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Digite seu nome..."
+            data-test="client-name"
           />
           <label htmlFor="cpf">CPF do Comprador:</label>
           <input
@@ -87,9 +96,9 @@ export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, s
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
             placeholder="Digite seu CPF..."
+            data-test="client-cpf"
           />
-          <button type="submit">Reservar Assento(s)</button>
-        </form>
+          <button type="submit" data-test="book-seat-btn">Reservar Assento(s)</button>
       </FormContainer>
       <Footer movie={movie} session={session} />
     </PageContainer>
@@ -117,14 +126,13 @@ const SeatsContainer = styled.div`
   justify-content: center;
   margin-top: 20px;
 `;
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   width: calc(100vw - 40px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 20px 0;
   font-size: 18px;
-  text-align: left;
   button {
     align-self: center;
   }

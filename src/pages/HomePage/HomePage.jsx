@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
-import Movie from "../../components/Movie";
 import { Link } from "react-router-dom";
 
 export default function HomePage({
@@ -11,15 +10,17 @@ export default function HomePage({
   setName,
   setCpf,
   setSelectedSeats,
+  setCurrentUrl,
 }) {
   const [movies, setMovies] = useState([]);
-  
+
   function resetVariables() {
     setMovie(undefined);
     setSession(undefined);
     setName("");
     setCpf("");
     setSelectedSeats([]);
+    setCurrentUrl(window.location.pathname);
   }
 
   function getMovies() {
@@ -39,8 +40,8 @@ export default function HomePage({
       <ListContainer>
         {movies.map((movie) => (
           <Link to={`/sessoes/${movie.id}`} key={movie.id}>
-            <MovieContainer>
-              <Movie movie={movie} />
+            <MovieContainer data-test="movie">
+              <img src={movie.posterURL} alt={movie.title} />
             </MovieContainer>
           </Link>
         ))}

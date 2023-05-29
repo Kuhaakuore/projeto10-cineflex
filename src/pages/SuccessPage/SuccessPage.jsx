@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function SuccessPage({
   movie,
@@ -8,12 +8,14 @@ export default function SuccessPage({
   name,
   cpf,
   selectedSeats,
+  setCurrentUrl
 }) {
-  const navigate = useNavigate();
 
-  if (!movie || !session || !name || !cpf || !selectedSeats) {
-    navigate("/");
+  function updateUrl() {
+    setCurrentUrl(window.location.pathname);
   }
+
+  useEffect(updateUrl, []);
 
   return (
     <PageContainer>
@@ -21,7 +23,7 @@ export default function SuccessPage({
         Pedido feito <br /> com sucesso!
       </h1>
 
-      <TextContainer>
+      <TextContainer data-test="movie-info">
         <strong>
           <p>Filme e sessão</p>
         </strong>
@@ -31,7 +33,7 @@ export default function SuccessPage({
         </p>
       </TextContainer>
 
-      <TextContainer>
+      <TextContainer data-test="seats-info">
         <strong>
           <p>Ingressos</p>
         </strong>
@@ -40,14 +42,14 @@ export default function SuccessPage({
         ))}
       </TextContainer>
 
-      <TextContainer>
+      <TextContainer data-test="client-info">
         <strong>
           <p>Comprador</p>
         </strong>
         <p>Nome: {name}</p>
         <p>CPF: {cpf}</p>
       </TextContainer>
-      <Link to={"/"}>
+      <Link to={"/"} data-test="go-home-btn">
         <button>Voltar para Home</button>
       </Link>
     </PageContainer>
