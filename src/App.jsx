@@ -5,21 +5,24 @@ import SessionsPage from "./pages/SessionsPage/SessionsPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
 import authorization from "./authorization";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import GlobalStyle from "./style/GlobalStyle";
+import ResetStyle from "./style/ResetStyle";
 
 export default function App() {
   authorization;
 
   return (
     <>
+      <ResetStyle />
+      <GlobalStyle />
       <BrowserRouter>
         <NavContainer>CINEFLEX</NavContainer>
         <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-            <Route path="/assentos/:idSessao" element={<SeatsPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
+          <Route path="/assentos/:idSessao" element={<SeatsPage />} />
+          <Route path="/sucesso" element={<SuccessPage />} />
         </Routes>
-        {/* <SeatsPage /> */}
-        {/* <SuccessPage /> */}
       </BrowserRouter>
     </>
   );
@@ -37,7 +40,6 @@ const NavContainer = styled.div`
   font-size: 34px;
   position: fixed;
   top: 0;
-  left: 0;
   a {
     text-decoration: none;
     color: #e8833a;

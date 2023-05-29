@@ -8,7 +8,7 @@ export default function SessionsPage() {
   const { idFilme } = useParams();
   const [movie, setMovie] = useState(undefined);
 
-  function getSessions() {
+  function getMovie() {
     const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`;
     const promise = axios.get(URL);
     promise
@@ -16,7 +16,7 @@ export default function SessionsPage() {
       .catch((response) => console.log(response));
   }
 
-  useEffect(getSessions, []);
+  useEffect(getMovie, []);
 
   function showSessions({ days }) {
     return (
@@ -89,21 +89,11 @@ const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 20px 0;
-  display: flex;
-  gap: 8px;
-  
   button {
-    width: 83px;
-    height: 43px;
-    border: none;
-    background: #e8833a;
-    border-radius: 3px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
-    color: #ffffff;
+    margin-right: 20px;
+  }
+  a {
+    text-decoration: none;
   }
 `;
 const FooterContainer = styled.div`

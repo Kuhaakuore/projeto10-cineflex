@@ -46,7 +46,7 @@ const PageContainer = styled.div`
   padding-top: 70px;
 `;
 const ListContainer = styled.div`
-  width: 330px;
+  width: 350px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
