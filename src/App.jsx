@@ -24,13 +24,14 @@ export default function App() {
     <>
       <ResetStyle />
       <GlobalStyle />
-      <NavContainer data-test="go-home-header-btn">
+      <NavContainer>
         {currentUrl === "/" || currentUrl === "/sucesso" ? (
           ""
         ) : (
           <ion-icon
             name="arrow-back-outline"
             onClick={() => navigate(-1)}
+            data-test="go-home-header-btn"
           ></ion-icon>
         )}
         CINEFLEX

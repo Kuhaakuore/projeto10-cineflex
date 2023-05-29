@@ -23,7 +23,7 @@ export default function SessionsPage({ movie, setMovie, setSession, setCurrentUr
     return (
       <>
         {days.map((day) => (
-          <Session day={day} key={day.id} setSession={setSession} data-test="movie-day"/>
+          <Session day={day} key={day.id} setSession={setSession}/>
         ))}
       </>
     );
