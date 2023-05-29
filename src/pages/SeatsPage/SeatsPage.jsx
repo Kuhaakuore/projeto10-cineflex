@@ -5,12 +5,9 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Seat from "../../components/Seat";
 
-export default function SeatsPage() {
+export default function SeatsPage({ name, setName, cpf, setCpf, selectedSeats, setSelectedSeats, session }) {
   const { idSessao } = useParams();
   const [seats, setSeats] = useState(undefined);
-  const [name, setName] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [selectedSeats, setSelectedSeats] = useState([]);
   const navigate = useNavigate();
 
   function getSeats() {

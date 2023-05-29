@@ -5,8 +5,23 @@ import styled from "styled-components";
 import Movie from "../../components/Movie";
 import { Link } from "react-router-dom";
 
-export default function HomePage() {
+export default function HomePage({
+  setMovie,
+  setSession,
+  setName,
+  setCpf,
+  setSelectedSeats,
+}) {
   const [movies, setMovies] = useState([]);
+  
+  function resetVariables() {
+    setMovie(undefined);
+    setSession(undefined);
+    setName("");
+    setCpf("");
+    setSelectedSeats([]);
+    console.log("pronto");
+  }
 
   function getMovies() {
     const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
@@ -17,6 +32,7 @@ export default function HomePage() {
   }
 
   useEffect(getMovies, []);
+  useEffect(resetVariables, []);
 
   return (
     <PageContainer>

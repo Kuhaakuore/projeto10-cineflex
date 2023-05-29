@@ -7,9 +7,15 @@ import authorization from "./authorization";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./style/GlobalStyle";
 import ResetStyle from "./style/ResetStyle";
+import { useState } from "react";
 
 export default function App() {
   authorization;
+  const [movie, setMovie] = useState(undefined);
+  const [session, setSession] = useState(undefined);
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   return (
     <>
@@ -18,10 +24,45 @@ export default function App() {
       <BrowserRouter>
         <NavContainer>CINEFLEX</NavContainer>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-          <Route path="/assentos/:idSessao" element={<SeatsPage />} />
-          <Route path="/sucesso" element={<SuccessPage />} />
+          <Route path="/" element={<HomePage
+          setMovie={setMovie}
+          setSession={setSession}
+          setName={setName}
+          setCpf={setCpf}
+          setSelectedSeats={setSelectedSeats} />} />
+          <Route
+            path="/sessoes/:idFilme"
+            element={<SessionsPage 
+                movie={movie} 
+                setMovie={setMovie} 
+                setSession={setSession}/>}
+          />
+          <Route
+            path="/assentos/:idSessao"
+            element={
+              <SeatsPage
+                name={name}
+                setName={setName}
+                cpf={cpf}
+                setCpf={setCpf}
+                selectedSeats={selectedSeats}
+                setSelectedSeats={setSelectedSeats}
+                session={session}
+              />
+            }
+          />
+          <Route
+            path="/sucesso"
+            element={
+              <SuccessPage
+                movie={movie}
+                session={session}
+                name={name}
+                cpf={cpf}
+                selectedSeats={selectedSeats}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

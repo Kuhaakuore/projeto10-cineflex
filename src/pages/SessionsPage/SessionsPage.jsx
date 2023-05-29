@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import Session from "../../components/Session";
 
-export default function SessionsPage() {
+export default function SessionsPage({ movie, setMovie, setSession }) {
   const { idFilme } = useParams();
-  const [movie, setMovie] = useState(undefined);
 
   function getMovie() {
     const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`;
@@ -22,16 +22,10 @@ export default function SessionsPage() {
     return (
       <>
         {days.map((day) => (
-          <SessionContainer key={day.id}>
-            {day.weekday} - {day.date}
-            <ButtonsContainer>
-              {day.showtimes.map((time) => (
-                <Link to={`/assentos/${time.id}`} key={time.id}>
-                  <button>{time.name}</button>
-                </Link>
-              ))}
-            </ButtonsContainer>
-          </SessionContainer>
+          <Session 
+          day={day} 
+          key={day.id}
+          setSession={setSession}/>
         ))}
       </>
     );
@@ -76,26 +70,7 @@ const PageContainer = styled.div`
     margin-top: 20px;
   }
 `;
-const SessionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-family: "Roboto";
-  font-size: 20px;
-  color: #293845;
-  padding: 0 20px;
-`;
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 20px 0;
-  button {
-    margin-right: 20px;
-  }
-  a {
-    text-decoration: none;
-  }
-`;
+
 const FooterContainer = styled.div`
   width: 100%;
   height: 120px;
