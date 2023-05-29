@@ -98,7 +98,7 @@ export default function SeatsPage({
             placeholder="Digite seu CPF..."
             data-test="client-cpf"
           />
-          <button type="submit" data-test="book-seat-btn">Reservar Assento(s)</button>
+          <button type="submit" data-test="book-seat-btn">Reservar assento(s)</button>
       </FormContainer>
       <Footer movie={movie} session={session} />
     </PageContainer>
@@ -117,6 +117,7 @@ const PageContainer = styled.div`
   padding-bottom: 120px;
   padding-top: 70px;
 `;
+
 const SeatsContainer = styled.div`
   width: 330px;
   display: flex;
@@ -126,6 +127,7 @@ const SeatsContainer = styled.div`
   justify-content: center;
   margin-top: 20px;
 `;
+
 const FormContainer = styled.form`
   width: calc(100vw - 40px);
   display: flex;
@@ -135,11 +137,15 @@ const FormContainer = styled.form`
   font-size: 18px;
   button {
     align-self: center;
+    margin-top: 37px;
+    min-height: 42px;
+    min-width: 225px;
   }
   input {
     width: calc(100vw - 60px);
   }
 `;
+
 const CaptionContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -147,6 +153,7 @@ const CaptionContainer = styled.div`
   justify-content: space-between;
   margin: 20px;
 `;
+
 const CaptionCircle = styled.div`
   border: 1px solid ${(props) => props.stroke};
   background-color: ${(props) => props.fill};
@@ -158,6 +165,7 @@ const CaptionCircle = styled.div`
   justify-content: center;
   margin: 5px 3px;
 `;
+
 const CaptionItem = styled.div`
   display: flex;
   flex-direction: column;

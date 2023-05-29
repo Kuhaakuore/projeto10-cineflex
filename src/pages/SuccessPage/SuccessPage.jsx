@@ -70,7 +70,9 @@ const PageContainer = styled.div`
     text-decoration: none;
   }
   button {
-    margin-top: 50px;
+    margin-top: 112px;
+    min-height: 42px;
+    min-width: 225px;
   }
   h1 {
     font-family: "Roboto";
@@ -84,6 +86,7 @@ const PageContainer = styled.div`
     color: #247a6b;
   }
 `;
+
 const TextContainer = styled.div`
   width: 100%;
   display: flex;

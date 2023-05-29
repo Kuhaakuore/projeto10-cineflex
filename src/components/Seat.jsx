@@ -66,4 +66,7 @@ const SeatItem = styled.div`
   justify-content: center;
   margin: 5px 3px;
   cursor: pointer;
+  &:hover {
+    background-color: ${(props) => props.stroke};
+  }
 `;

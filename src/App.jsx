@@ -112,6 +112,9 @@ const NavContainer = styled.div`
     top: 25%;
     left: 0;
     cursor: pointer;
+    &:hover {
+      color: #c96449;
+    }
   }
   a {
     text-decoration: none;

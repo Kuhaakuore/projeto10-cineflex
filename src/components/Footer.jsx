@@ -22,7 +22,8 @@ export default function Footer({ movie, session }) {
 const FooterContainer = styled.div`
   width: 100%;
   height: 120px;
-  background-color: #c3cfd9;
+  background-color: #DFE6ED;
+  border: 1px solid #9EADBA;
   display: flex;
   flex-direction: row;
   align-items: center;

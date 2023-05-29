@@ -36,7 +36,7 @@ export default function HomePage({
 
   return (
     <PageContainer>
-      Selecione o filme
+      <div>Selecione o filme</div>
       <ListContainer>
         {movies.map((movie) => (
           <Link to={`/sessoes/${movie.id}`} key={movie.id}>
@@ -58,16 +58,22 @@ const PageContainer = styled.div`
   font-size: 24px;
   text-align: center;
   color: #293845;
-  margin-top: 30px;
-  padding-top: 70px;
+  margin-top: 67px;
+
+  div {
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+  }
 `;
+
 const ListContainer = styled.div`
   width: 350px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  padding: 10px;
 `;
+
 const MovieContainer = styled.div`
   width: 145px;
   height: 210px;
